@@ -8,82 +8,82 @@ function Signup() {
     let [name, setName] = useState("")
     let [email, setEmail] = useState("")
     let [password, setPassword] = useState("")
-  
+
     const [show, setShow] = useState(false)
     const handleClick = () => setShow(!show)
-  
-    let location=useLocation()
-    let navigate=useNavigate()
-    let toast=useToast()
 
-    let handleForm=()=>{
-        let payload={name,email,password}
-        if(name&&email&&password){
-    
-          axios.post(`https://lms-iliv.onrender.com/student/signup`,payload).then((res)=>{
-           console.log(res.data.msg)
-           toast({
-               description:res.data.msg,
-               status:"success",
-               isClosable:true,
-               duration:9000,
-               position:"top"
-           })
-           navigate("/login",{state:location.state})
-          }).catch((er)=>{
-           console.log(er)
-           toast({
-            description:"all fields required",
-            status:"error",
-            isClosable:true,
-            duration:9000,
-            position:"top"
-        })
-          })
-        }else{
-    
+    let location = useLocation()
+    let navigate = useNavigate()
+    let toast = useToast()
+
+    let handleForm = () => {
+        let payload = { name, email, password }
+        if (name && email && password) {
+
+            axios.post(`https://grumpy-clam-nightgown.cyclic.app/user/signup`, payload).then((res) => {
+                console.log(res.data.msg)
+                toast({
+                    description: res.data.msg,
+                    status: "success",
+                    isClosable: true,
+                    duration: 9000,
+                    position: "top"
+                })
+                navigate("/login", { state: location.state })
+            }).catch((er) => {
+                console.log(er)
+
+            })
+        } else {
+            toast({
+                description: "all fields required",
+                status: "error",
+                isClosable: true,
+                duration: 9000,
+                position: "top"
+            })
         }
-      }
-  return (
-<Box shadow={"lg"} w="fit-content" p={"3%"} m="auto" mt={"25vh"} borderRadius={10} display={"flex"} flexDir="column" alignItems="center" justifyContent={"center"} gap={5}>
-          Signup 
-      <InputGroup size='md'>
-        <Input placeholder='Enter Name' onChange={(e) => setName(e.target.value)} />
-      </InputGroup>
-      <InputGroup size='md'>
-        <Input placeholder='Enter Email' onChange={(e) => setEmail(e.target.value)} />
-      </InputGroup>
-      <InputGroup size='md'>
-        <Input
-          pr='4.5rem'
-          type={show ? 'text' : 'password'}
-          placeholder='Enter password'
-          onChange={(e) => setPassword(e.target.value)}
-        />
+    }
+    return (
+        <Box shadow={"lg"} w="fit-content" p={"3%"} m="auto" mt={"20vh"} borderRadius={10} display={"flex"} flexDir="column" alignItems="center" justifyContent={"center"} gap={5}>
+            Signup
+            <InputGroup size='md'>
+                <Input placeholder='Enter Name' onChange={(e) => setName(e.target.value)} />
+            </InputGroup>
+            <InputGroup size='md'>
+                <Input placeholder='Enter Email' onChange={(e) => setEmail(e.target.value)} />
+            </InputGroup>
+            <InputGroup size='md'>
+                <Input
+                    pr='4.5rem'
+                    type={show ? 'text' : 'password'}
+                    placeholder='Enter password'
+                    onChange={(e) => setPassword(e.target.value)}
+                />
 
-        <InputRightElement width='4.5rem'>
-          <Button h='1.75rem' size='sm' onClick={handleClick}>
-            <ViewIcon />
-          </Button>
-        </InputRightElement>
-      </InputGroup>
+                <InputRightElement width='4.5rem'>
+                    <Button h='1.75rem' size='sm' onClick={handleClick}>
+                        <ViewIcon />
+                    </Button>
+                </InputRightElement>
+            </InputGroup>
 
-      <Button onClick={handleForm}>
-        submit
-      </Button>
-      <Box>
-         if You have already Signup
+            <Button onClick={handleForm}>
+                submit
+            </Button>
+            <Box>
+                If You have already Signup
 
-      </Box>
-      <Box color={"blue"}>
+            </Box>
+            <Box color={"blue"}>
 
-      <Link to={"/login"} >
-      Login
-      </Link>
-      </Box>
-    </Box>
+                <Link to={"/login"} >
+                    Login
+                </Link>
+            </Box>
+        </Box>
 
-  )
+    )
 }
 
 export default Signup

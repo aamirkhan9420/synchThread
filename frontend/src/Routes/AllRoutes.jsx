@@ -8,13 +8,12 @@ import Signup from '../Components/SignUp/Signup'
 function AllRoutes() {
   return (
  <Routes>
+    <Route path='/'  element={<Login />}/>
+
     <Route path='/login'  element={<Login />}/>
     <Route path='/signup'  element={<Signup />}/>
     <Route path='/map'  element={<Maps />}/>
     <Route path='/dashboard'  element={<Dashboard />}/>
-
-
-
  </Routes>
   )
 }
