@@ -2,6 +2,7 @@
 Live link https://frontend-ecru.vercel.app/login
 <div width="100%">
 #SignUp page
+  
 ![Screenshot (2290)](https://user-images.githubusercontent.com/101388992/219597672-315b2e6e-a493-437c-9330-5b2d3ac1730f.png)
 
 #LogIn page
